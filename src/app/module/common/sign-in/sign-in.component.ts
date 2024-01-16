@@ -2,6 +2,8 @@
 import {Component} from '@angular/core';
 // angular forms
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+// angular router
+import {RouterLink} from "@angular/router";
 // shared forms
 import {TextInputComponent} from "../../../shared/forms/text-input/text-input.component";
 // shared buttons
@@ -14,7 +16,8 @@ import {SubmitButtonComponent} from "../../../shared/buttons/submit-button/submi
         FormsModule,
         ReactiveFormsModule,
         TextInputComponent,
-        SubmitButtonComponent
+        SubmitButtonComponent,
+        RouterLink
     ],
     templateUrl: './sign-in.component.html',
     styleUrl: './sign-in.component.css'
