@@ -10,3 +10,16 @@
     font-family: "Poppins", sans-serif;
     font-size: 16px;
 }
+
+body{
+    height: 100vh;
+}
+
+/*theme colors*/
+:root{
+    --primary-color:#17a2b8;
+    --primary-color-black:#000000;
+    --primary-color-white:#FFFFFF;
+    --primary-color-danger:#fd5353;
+    --primary-color-border:#dddddd ;
+}

@@ -1,0 +1,17 @@
+<div class="flex flex-col h-full">
+    <div class="flex flex-col justify-center items-center h-full">
+        <h1 class="text-2xl font-[600] capitalize mb-[3rem] text-[--primary-color]">Sign In</h1>
+        <ng-form [formGroup]="signInForm" (ngSubmit)="submitData()">
+            <shared-text-input formControlName="email"
+                               label="User name"
+                               placeholder="Enter user name"
+                               type="text"></shared-text-input>
+            <shared-text-input formControlName="password"
+                               label="Password"
+                               type="password"
+                               placeholder="Enter password"></shared-text-input>
+            <shared-submit-button (onSubmit)="submitData()" customCSSClasses="mt-3"
+                                  buttonText="Sign In"></shared-submit-button>
+        </ng-form>
+    </div>
+</div>
