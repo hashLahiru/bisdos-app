@@ -1,0 +1,18 @@
+.edite-button {
+    box-shadow: rgba(50, 50, 93, 0.25) 0 2px 5px -1px, rgba(0, 0, 0, 0.3) 0 1px 3px -1px;
+    @apply right-[20px] rounded-[50%] top-[20px] w-[40px] aspect-[1] cursor-pointer left-auto m-auto
+    absolute bg-[--primary-color-white] text-[--primary-color] flex justify-center items-center
+}
+
+.social-media-buttons{
+    box-shadow: rgba(50, 50, 93, 0.25) 0 2px 5px -1px, rgba(0, 0, 0, 0.3) 0 1px 3px -1px;
+    @apply bg-[--primary-color] w-[50px] aspect-[1] flex items-center justify-center p-[10px] rounded-[50%]
+}
+
+.social-media-buttons img{
+    @apply object-cover
+}
+
+.contact-info{
+    @apply flex gap-x-[10px] text-[--primary-color] mb-[1rem]
+}
