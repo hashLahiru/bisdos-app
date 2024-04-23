@@ -1,0 +1,16 @@
+<div class="flex flex-col text-[--primary-color-black]">
+    @if (!isLabelHidden) {
+        <label class="text-[14px] mb-1 font-[500] text-[--primary-color]">{{ label }}</label>
+    }
+
+    <textarea
+            [placeholder]="placeholder"
+            [formControl]="$any(ngControl.control)"
+            class="text-input"
+            [class]="ngControl.valid || !ngControl.touched?'mb-[19.5px]':'text-input-invalid'">
+    </textarea>
+
+    @if (ngControl.invalid && ngControl.touched) {
+        <span class="text-[13px] text-[--primary-color-danger]">Please enter valid {{ label }}</span>
+    }
+</div>

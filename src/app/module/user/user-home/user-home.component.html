@@ -1,0 +1,76 @@
+<div class="bg-[--primary-color] h-full">
+    <div class="w-full pt-[25dvh]">
+        <div class="w-full bg-[--primary-color-white] rounded-t-[30px] h-[1000px] flex flex-col items-center ">
+            <div #dp class="sticky top-0 w-full flex items-center mt-[-75px] p-[20px] "
+                 [class]="isElementOnTop?'bg-[--primary-color] text-[--primary-color-white] gap-x-[20px]':
+                 'bg-transparent text-[--primary-color] flex-col text-center gap-y-[10px]'">
+                <!--edite profile button-->
+                <a class="edite-button" routerLink="/user/edit">
+                    <span class="material-icons-round">edit</span>
+                </a>
+                <!--end-->
+                <!--profile picture-->
+                <div class=" aspect-[1] rounded-[50%] overflow-hidden flex justify-center items-center"
+                     [class]="isElementOnTop?'w-[70px]':'w-[150px]'">
+                    <img src="assets/images/user/user.jpeg" alt="dp" class="object-center">
+                </div>
+                <!--end-->
+                <!--name and designation-->
+                <div class="relative">
+                    <h1 class="text-2xl font-[500]">John Doe</h1>
+                    <span>Software Engineer</span>
+                </div>
+                <!--end-->
+            </div>
+            <div class="px-[20px] text-[#bcb8b1] bg-[--primary-color-white]"
+                 [class]="isElementOnTop?'pt-[20px]':''">
+                <!--description -->
+                <p class="text-[12px] text-center">mediocrem assueverit corrumpit egestas euripidis comprehensam
+                    habitant nulla nec elementum repudiandae dicam constituam libris posse altera noluisse egestas
+                    appareat ligula vestibulum simul necessitatibus cum vestibulum nullam alterum purus pro himenaeos
+                    iudicabit adhuc elitr saperet recteque eirmod luctus omittantur platonem gravida augue primis nunc
+                    hac animal sagittis altera ei propriae ullamcorper</p>
+                <!--end-->
+                <!--social media links-->
+                <ul class="my-[2rem] flex justify-between">
+                    @for (item of socialMediaList; track item) {
+                        <li>
+                            <a class="social-media-buttons">
+                                <img [src]="item.icon" alt="social media icon">
+                            </a>
+                        </li>
+                    }
+                </ul>
+                <!--end-->
+                <!--contact info-->
+                <ul>
+                    <li>
+                        <a class="contact-info">
+                            <span class="material-icons-round">phone</span>
+                            <span>+94 75 562 0353</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="contact-info">
+                            <span class="material-icons-round">email</span>
+                            <span>hasinthalahiru33&#64;gmail.com</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="contact-info">
+                            <span class="material-icons-round">location_on</span>
+                            <span>No 28, Dunhinna, Werapitiya</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="contact-info">
+                            <span class="material-icons-round">public</span>
+                            <span>www.hasinthalahiru.com</span>
+                        </a>
+                    </li>
+                </ul>
+                <!--end-->
+            </div>
+        </div>
+    </div>
+</div>
