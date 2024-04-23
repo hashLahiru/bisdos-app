@@ -1,5 +1,6 @@
 // angular core
 import {AfterViewInit, Component, ElementRef, HostListener, ViewChild} from '@angular/core';
+import {RouterLink} from "@angular/router";
 
 // schema
 type socialMediaItem = {
@@ -10,7 +11,9 @@ type socialMediaItem = {
 @Component({
     selector: 'user-home-page',
     standalone: true,
-    imports: [],
+    imports: [
+        RouterLink
+    ],
     templateUrl: './user-home.component.html',
     styleUrl: './user-home.component.css'
 })
