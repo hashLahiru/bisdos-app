@@ -8,6 +8,9 @@ import {Router, RouterLink} from "@angular/router";
 import {TextInputComponent} from "../../../shared/forms/text-input/text-input.component";
 // shared buttons
 import {SubmitButtonComponent} from "../../../shared/buttons/submit-button/submit-button.component";
+import {UserService} from "../../../core/services/user.service";
+import {LoginData, LoginRequest} from "../../../core/modals/user.modal";
+import {USER_TYPES} from "../../../data/constants/user.constants";
 
 @Component({
     selector: 'sign-in-page',
@@ -27,7 +30,7 @@ export class SignInComponent {
     /** @summary form group for sign in*/
     signInForm!: FormGroup
 
-    constructor(private frmBuilder: FormBuilder,private router:Router) {
+    constructor(private frmBuilder: FormBuilder, private router: Router, private userService: UserService) {
         this.initForms()
     }
 
@@ -40,8 +43,26 @@ export class SignInComponent {
     }
 
     /** @summary this method for submit login details*/
-    submitData() {
+    submitData(): void {
         this.signInForm.markAllAsTouched();
-        this.router.navigate(["/user/"])
+
+        if (!this.signInForm.valid) {
+            return
+        }
+        let loginRequest: LoginRequest = {
+            userName: this.signInForm.get('email')?.value,
+            password: this.signInForm.get('password')?.value,
+            userType: USER_TYPES.PROFILE
+        }
+
+        console.log(loginRequest)
+        this.userService.Login(loginRequest).subscribe({
+            next: (res: LoginData): void => {
+                this.router.navigate(["/user", res.data]).then();
+            },
+            error(e): void {
+                console.error(e.message)
+            }
+        })
     }
 }
