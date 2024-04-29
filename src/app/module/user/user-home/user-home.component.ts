@@ -1,6 +1,9 @@
 // angular core
-import {AfterViewInit, Component, ElementRef, HostListener, ViewChild} from '@angular/core';
-import {RouterLink} from "@angular/router";
+import {AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
+import {ActivatedRoute, ParamMap, RouterLink} from "@angular/router";
+import {ProfileService} from "../../../core/services/profile.service";
+import {ProfileResponse} from "../../../core/modals/profile.modal";
+import {NgOptimizedImage} from "@angular/common";
 
 // schema
 type socialMediaItem = {
@@ -12,19 +15,19 @@ type socialMediaItem = {
     selector: 'user-home-page',
     standalone: true,
     imports: [
-        RouterLink
+        RouterLink,
+        NgOptimizedImage
     ],
     templateUrl: './user-home.component.html',
     styleUrl: './user-home.component.css'
 })
-export class UserHomeComponent implements AfterViewInit{
+export class UserHomeComponent implements OnInit, AfterViewInit {
 
     @ViewChild("dp") dp!: ElementRef;
 
-    isElementOnTop: boolean = false;
-    elementCurrentPlace!:number
-
-    socialMediaList: socialMediaItem[] = [
+    public isElementOnTop: boolean = false;
+    public profileData!:ProfileResponse;
+    public socialMediaList: socialMediaItem[] = [
         {
             url: "", icon: "assets/images/social-media/facebook-app-symbol.png"
         },
@@ -46,13 +49,43 @@ export class UserHomeComponent implements AfterViewInit{
 
     ]
 
-    ngAfterViewInit() {
-        this.elementCurrentPlace=this.dp.nativeElement.getBoundingClientRect().top;
+    private elementCurrentPlace!: number
+
+    constructor(private activatedRoute: ActivatedRoute, private profileService: ProfileService) {
+    }
+
+    ngOnInit(): void {
+        this.getData();
+    }
+
+    ngAfterViewInit(): void {
+        this.elementCurrentPlace = this.dp.nativeElement.getBoundingClientRect().top;
         console.log(this.elementCurrentPlace);
     }
 
     @HostListener('window:scroll', ['$event'])
-    onScroll() {
+    onScroll(): void {
         this.isElementOnTop = this.dp.nativeElement.getBoundingClientRect().top < this.elementCurrentPlace;
+    }
+
+    private getData(): void {
+        this.activatedRoute.paramMap.subscribe({
+            next: (params:ParamMap):void => {
+                const id = params.get('id')
+                if (id != null) {
+                    this.profileService.getActiveUserProfileById(parseInt(id)).subscribe({
+                        next:(data:ProfileResponse):void=>{
+                            this.profileData=data;
+                        },
+                        error:(er):void=>{
+                            console.error(er)
+                        }
+                    })
+                }
+            },
+            error: (er):void => {
+                console.error(er)
+            }
+        })
     }
 }

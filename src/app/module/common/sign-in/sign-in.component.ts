@@ -55,10 +55,9 @@ export class SignInComponent {
             userType: USER_TYPES.PROFILE
         }
 
-        console.log(loginRequest)
         this.userService.Login(loginRequest).subscribe({
             next: (res: LoginData): void => {
-                this.router.navigate(["/user", res.data]).then();
+                this.router.navigate(["user/profile", res.data]).then();
             },
             error(e): void {
                 console.error(e.message)

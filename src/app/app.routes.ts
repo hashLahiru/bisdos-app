@@ -11,7 +11,7 @@ export const routes: Routes = [
         children:commonRoutes
     },
     {
-        path:"user/:id",
+        path:"user",
         children:userRoutes
     }
 ];

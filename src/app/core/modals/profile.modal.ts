@@ -2,6 +2,7 @@ export interface ProfileResponse {
     id: number;
     name: string;
     title: string;
+    description:string;
     mobile: string;
     office: string;
     email: string;

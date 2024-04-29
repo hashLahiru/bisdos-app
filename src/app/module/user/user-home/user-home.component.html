@@ -10,26 +10,22 @@
                 </a>
                 <!--end-->
                 <!--profile picture-->
-                <div class=" aspect-[1] rounded-[50%] overflow-hidden flex justify-center items-center"
+                <div class=" aspect-[1] rounded-[50%] overflow-hidden flex justify-center items-center bg-[grey]"
                      [class]="isElementOnTop?'w-[70px]':'w-[150px]'">
-                    <img src="assets/images/user/user.jpeg" alt="dp" class="object-center">
+                    <img [src]="profileData.profilePicture" alt="dp" class="object-center">
                 </div>
                 <!--end-->
                 <!--name and designation-->
                 <div class="relative">
-                    <h1 class="text-2xl font-[500]">John Doe</h1>
-                    <span>Software Engineer</span>
+                    <h1 class="text-2xl font-[500]" [innerText]="profileData?.name"></h1>
+                    <span [innerText]="profileData?.title"></span>
                 </div>
                 <!--end-->
             </div>
             <div class="px-[20px] text-[#bcb8b1] bg-[--primary-color-white]"
                  [class]="isElementOnTop?'pt-[20px]':''">
                 <!--description -->
-                <p class="text-[12px] text-center">mediocrem assueverit corrumpit egestas euripidis comprehensam
-                    habitant nulla nec elementum repudiandae dicam constituam libris posse altera noluisse egestas
-                    appareat ligula vestibulum simul necessitatibus cum vestibulum nullam alterum purus pro himenaeos
-                    iudicabit adhuc elitr saperet recteque eirmod luctus omittantur platonem gravida augue primis nunc
-                    hac animal sagittis altera ei propriae ullamcorper</p>
+                <p class="text-[12px] text-center" [innerText]="profileData?.description"></p>
                 <!--end-->
                 <!--social media links-->
                 <ul class="my-[2rem] flex justify-between">
@@ -45,27 +41,27 @@
                 <!--contact info-->
                 <ul>
                     <li>
-                        <a class="contact-info">
+                        <a class="contact-info" href="tel:{{profileData.mobile}}">
                             <span class="material-icons-round">phone</span>
-                            <span>+94 75 562 0353</span>
+                            <span [innerText]="profileData?.mobile"></span>
                         </a>
                     </li>
                     <li>
-                        <a class="contact-info">
+                        <a class="contact-info" href="mailto:{{profileData.email}}">
                             <span class="material-icons-round">email</span>
-                            <span>hasinthalahiru33&#64;gmail.com</span>
+                            <span [innerText]="profileData.email"></span>
                         </a>
                     </li>
                     <li>
                         <a class="contact-info">
                             <span class="material-icons-round">location_on</span>
-                            <span>No 28, Dunhinna, Werapitiya</span>
+                            <span [innerText]="profileData.address"></span>
                         </a>
                     </li>
                     <li>
-                        <a class="contact-info">
+                        <a class="contact-info" [href]="profileData.website">
                             <span class="material-icons-round">public</span>
-                            <span>www.hasinthalahiru.com</span>
+                            <span [innerText]="profileData.website"></span>
                         </a>
                     </li>
                 </ul>

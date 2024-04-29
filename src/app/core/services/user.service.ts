@@ -22,7 +22,6 @@ export class UserService {
                         status: true,
                         data: res.data.profileId
                     } as LoginData;
-
                 }
             )
         );
